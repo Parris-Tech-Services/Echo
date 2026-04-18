@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="theme-color" content="#05060c" />
+  <title>ECHO VAULT</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="game-wrap">
+    <canvas id="game"></canvas>
+
+    <!-- Touch controls (shown only on touch devices) -->
+    <div id="touch-ui" class="hidden">
+      <div id="stick-left" class="stick">
+        <div class="stick-base"></div>
+        <div class="stick-knob"></div>
+      </div>
+      <div id="stick-right" class="stick">
+        <div class="stick-base"></div>
+        <div class="stick-knob"></div>
+      </div>
+      <button id="btn-dash" class="touch-btn" aria-label="Dash">
+        <span class="label">DASH</span>
+      </button>
+      <button id="btn-echo" class="touch-btn echo" aria-label="Echo">
+        <span class="label">ECHO</span>
+      </button>
+      <button id="btn-pause" class="touch-btn small" aria-label="Pause">
+        <span class="label">II</span>
+      </button>
+    </div>
+
+    <!-- Title screen -->
+    <div id="title" class="overlay visible">
+      <div class="panel">
+        <h1 class="logo">ECHO<span>VAULT</span></h1>
+        <p class="tag">Leave a trail. Fight beside it.</p>
+
+        <div class="controls" data-desktop>
+          <div class="row"><kbd>W A S D</kbd><span>move</span></div>
+          <div class="row"><kbd>← ↑ ↓ →</kbd><span>aim &amp; shoot</span></div>
+          <div class="row"><kbd>SPACE</kbd><span>dash</span></div>
+          <div class="row"><kbd>SHIFT</kbd><span>cast echo</span></div>
+          <div class="row"><kbd>P</kbd><span>pause</span></div>
+        </div>
+
+        <div class="controls" data-touch>
+          <div class="row"><b>Left stick</b><span>move</span></div>
+          <div class="row"><b>Right stick</b><span>aim &amp; auto-fire</span></div>
+          <div class="row"><b>DASH button</b><span>dash (i-frames)</span></div>
+          <div class="row"><b>ECHO button</b><span>cast echo</span></div>
+        </div>
+
+        <p class="hint">
+          Everything you do is recorded. Tap <b>ECHO</b> to release a ghost of your last 3 seconds that fights for you.
+        </p>
+
+        <button id="start-btn" class="primary">ENTER VAULT</button>
+        <p class="hiscore">Best: <span id="title-hiscore">0</span></p>
+      </div>
+    </div>
+
+    <!-- Pause -->
+    <div id="pause" class="overlay">
+      <div class="panel">
+        <h2>PAUSED</h2>
+        <p class="hint" data-desktop>Press <kbd>P</kbd> to resume</p>
+        <p class="hint" data-touch>Tap RESUME to continue</p>
+        <button id="resume-btn" class="primary">RESUME</button>
+        <button id="quit-btn" class="ghost">QUIT TO TITLE</button>
+      </div>
+    </div>
+
+    <!-- Game over -->
+    <div id="gameover" class="overlay">
+      <div class="panel">
+        <h2>VAULT SEALED</h2>
+        <p class="result">Score: <span id="final-score">0</span></p>
+        <p class="result small">Wave: <span id="final-wave">0</span></p>
+        <p class="result small">Best: <span id="final-hiscore">0</span></p>
+        <button id="retry-btn" class="primary">TRY AGAIN</button>
+        <button id="title-btn" class="ghost">TITLE SCREEN</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
